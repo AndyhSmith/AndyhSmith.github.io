@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+
+<url>
+  <loc>https://andyhsmith.com/</loc>
+  <lastmod>2020-02-27T19:54:14+00:00</lastmod>
+  <priority>1.00</priority>
+</url>
+<url>
+  <loc>https://andyhsmith.com/docs/andy_smith_resume_2020.pdf</loc>
+  <lastmod>2020-02-15T04:45:22+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://andyhsmith.com/proj/mandelbrot/mandelbrot.html</loc>
+  <lastmod>2020-02-21T05:23:36+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+<url>
+  <loc>https://andyhsmith.com/proj/bugs/bugs.html</loc>
+  <lastmod>2020-02-12T04:07:40+00:00</lastmod>
+  <priority>0.80</priority>
+</url>
+
+<url>
+  <loc>https://andyhsmith.com/img/full/2019_carlsbad_full.jpg</loc>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://andyhsmith.com/img/full/2019_wedding_full.jpg</loc>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://andyhsmith.com/img/full/2019_colorrun_full.jpg</loc>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://andyhsmith.com/img/full/2019_knocking_doors_columbus_full.jpg</loc>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://andyhsmith.com/img/full/2018_provo_mountain_full.jpg</loc>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://andyhsmith.com/img/full/2018_chicago_bean_full.jpg</loc>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://andyhsmith.com/img/full/2015_australia_jumping_full.jpg</loc>
+  <priority>0.70</priority>
+</url>
+<url>
+  <loc>https://andyhsmith.com/img/full/2015_australia_jumping_group_full.jpg</loc>
+  <priority>0.70</priority>
+</url>
+
+
+</urlset>

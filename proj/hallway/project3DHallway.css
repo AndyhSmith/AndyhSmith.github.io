@@ -1,0 +1,29 @@
+
+body {
+		text-align: center;
+}
+
+canvas {
+  border: solid;
+}
+
+
+button.controlls {
+  border: none;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  padding: 15px 32px;
+}
+
+button.controlls {
+  background-color: #EE9828;
+  color: white;
+}
+
+button.controlls:hover {
+  background-color: #C47D21;
+  color: white;
+}
+
+

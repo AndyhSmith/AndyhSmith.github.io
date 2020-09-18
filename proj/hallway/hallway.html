@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="description" content="An interactive javascript experiment.">
+	<meta name="keywords" content="JavaScript, HTML5, game, hallway, maze, 3D experiment">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <link rel="stylesheet" href="project3DHallway.css" >
+	<link rel="stylesheet" href="../../css/clearButton.css">
+	<link rel="stylesheet" href="../../css/noStyleLink.css">
+	<link rel="stylesheet" href="../../css/noScroll.css">
+    <title>3D Hallway | Experiment</title>
+</head>
+
+
+<body>
+	<h1>3D Hallway</h1>
+	<a href="/" class="noStyleLink"><div id="exitToHome" class="clearButton">X</div></a>
+    <canvas id="myCanvas" width="300px;" height="300px;">
+          Your browser does not support the canvas element.
+    </canvas>
+    <br>
+    <button onclick="forwards()" class="controlls">Forwards</button>
+    <button onclick="back()" class="controlls">Back</button>
+    <script src="draw.js"></script>
+    <script src="functions.js"></script>
+    <script src="project3DHallway.js"></script>
+</body>
+</html>

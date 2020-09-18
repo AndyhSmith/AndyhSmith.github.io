@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- Meta Tags -->
+	<meta charset="UTF-8">
+ 	<meta name="description" content="JS Mandelbrot Generator">
+ 	<meta name="keywords" content="JavaScript, HTML5, Mandelbrot, Animation, experiment">
+ 	<meta name="author" content="Andy Smith">
+	<meta name="viewport" content="width=device-width, initial-scale=0.6, user-scalable=no">
+	
+	<!-- Set Up -->
+	<title>JS Mandelbrot Generator</title>
+	
+	<!-- CSS -->
+	<link rel="stylesheet" href="../../css/clearButton.css">
+	<link type="text/css" rel="stylesheet" href="../../css/toggle.css"></link>
+	<link rel="stylesheet" href="../../css/noStyleLink.css">
+	<link type="text/css" rel="stylesheet" href="../../css/style-modern.css"></link>
+	<link type="text/css" rel="stylesheet" href="../../css/tool-tip.css"></link>
+	<link type="text/css" rel="stylesheet" href="projectMandelbrot.css"></link>
+</head>
+
+<body style="color: white" >
+	<!-- Heading -->
+	<div class="header" style="text-align: center;">
+		<h1> Andy Smith<br>
+		</h1>
+		<div id="sub-h1-id">
+				<p>Computer Science & Business</p>
+		</div>
+	</div>
+	
+	<!-- Content -->
+	<div id="center">
+		<div class="parallelogram" id="parallelogram1"></div>
+		<div class="parallelogram" id="parallelogram2"></div>
+		<div class="parallelogram" id="parallelogram3"></div>
+		<div class="parallelogram" id="parallelogram4"></div><br>
+		<a href="/" class="noStyleLink"><div id="exitToHome" class="clearButton">X</div></a>
+		
+		<!-- Mandelbrot Content -->
+		<h3 style="color:white;">JS Mandelbrot Generator</h3>
+		<script src="projectMandelbrot.js" async></script>
+		<script src="p5/p5.js"></script>
+		<div id="myContainer"></div>
+	
+		
+		<div class="tooltip">
+			<button onclick="reset()">Reset</button>
+			<span class="tooltiptext">Reset the mandelbrot to the default zoom.</span>
+		</div>
+		<div class="tooltip">
+			<button class="psb" onclick="refresh()">Redraw</button>
+			<span class="tooltiptext">Redraw the mandelbrot with new parameters.</span>
+		</div>
+		
+		<div class="tooltip">
+			<button class="psb" id="zoomInID" onclick="zoomIn()">Zoom In</button>
+			<span class="tooltiptext">Set the mandelbrot to zoom in when you touch or tap a location.</span>
+		</div>
+		<div class="tooltip">
+			<button class="psb" id="zoomOutID" onclick="zoomOut()">Zoom Out</button>
+			<span class="tooltiptext">Set the mandelbrot to zoom out when you touch or tap a location.</span>
+		</div>
+		<div class="tooltip">
+			<button class="psb" id="panID" onclick="pan()">Pan</button>
+			<span class="tooltiptext">Pan around the mandelbrot without zooming in/out.</span>
+		</div>
+		<div class="tooltip">
+			<button class="psb" onclick="zoomCenter()">Zoom Center</button>
+			<span class="tooltiptext">Zoom in or out of current mandelbrot scene.</span>
+		</div>
+		<div class="tooltip">
+			<button class="psb" onclick="downloadPNG()">Download</button>
+			<span class="tooltiptext">Download a .png file of the current mandelbrot scene.</span>
+		</div>
+		
+		<div style="color:white;">
+			<table>
+				<tr>
+					<th>
+						<div class="tooltip">
+							Number of Iterations<br>
+							<input type="text" id="numberOfIterations" value="100"><br>
+							<span class="tooltiptext"><span style="color: yellow;">WARNING:</span> Higher iteration count will decrease load speed. Iterations can be compared to the amount of detail in the mandelbrot.</span>
+						</div>
+						
+					</th>
+					<th>
+						<div class="tooltip">
+							Download File Name<br>
+							<input type="text" id="downloadName" value="Mandelbrot"><br>
+							<span class="tooltiptext">Sets the name of the image file that will be downloaded.</span>
+						</div>
+					</th>
+				</tr>
+			</table>
+		</div>
+		
+		
+		<br><br>
+		<!-- Advanced Settings  -->
+		<h3 style="color:white; margin-bottom: -20px;">Advanced Settings</h3>
+		<p><i>Once the animation process has begun the only way to stop it is to refresh the page. The animator will zoom in or out of the center of the mandelbrot scene using the zoom amount specified below.</i></p>
+		<div class="tooltip">
+			<button class="psb" onclick="animateZoom()">Animate</button><br>
+			<span class="tooltiptext">Animates mandelbrot by zooming in/out of the center of the current scene.</span>
+		</div>
+		
+		
+		<table>
+			<tr>
+				<th>
+					Zoom Amount<br>
+					<input type="text" id="zoomAmount" value="2">
+				</th>
+				<th>
+					Animation Frames<br>
+					<input type="text" id="animationFrames" value="3"> 
+				</th>
+				<th>
+					Animation Progress<br>
+					<input type="text" id="animationProgress" value="N/A" readonly>
+				</th>
+		</table>
+		
+		Canvas Width (Not Working)<br>
+		<input type="text" id="canvas-width" value="500">
+		Canvas Height (Not Working)<br>
+		<input type="text" id="canvas-height" value="500">
+			
+		<br><br>
+		<p style="text-align:center;"> Credit:<br>Canvas Manipulation: P5JS.org<br>Hand-coded XHTML/CSS/JS</p>
+	
+	</div>
+</body>
+</html>
