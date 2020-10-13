@@ -38,7 +38,8 @@ class PathFinder {
         this.createUnvisitedSet();
         this.addNeighbors();
         this.calculateDistances();
-        this.toString();
+        this.traceback.reverse();
+        //this.toString();
        
         
 

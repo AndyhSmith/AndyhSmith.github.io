@@ -14,13 +14,15 @@ class GameMap {
         this.selectedTile = null;
         this.mapRandomizer = new MapRandomizer(this);
         this.gameInfo = new GameInfo(this);
+        this.enemyUnits = [];
 
         this.viablePathingNodes = [EMPTY, START, FINISH, NO_BUILD, CHECK_1, CHECK_2, CHECK_3, CHECK_4, CHECK_5, RANGE_BOOST, DAMAGE_BOOST,ENEMY_SPEED_BOOST];
         this.pathFinder  = null;
-        this.buildPath;
+        this.buildPath();
         
         this.showPath = false;
         this.showVisited = false;
+
         
     }
 
@@ -34,6 +36,17 @@ class GameMap {
 
     destroyObject() {
         this.array[this.selectedTile[0]][this.selectedTile[1]] = 0;
+    }
+
+    startWave() {
+        let newEnemy = new Enemy1(this.pathFinder.traceback, this.tileSize);
+        this.enemyUnits.push(newEnemy)
+    }
+
+    updateGameTick() {
+        for (let i = 0; i < gameMap.enemyUnits.length; i++) {
+            gameMap.enemyUnits[i].update();
+        }
     }
  
     // Prints out the details of GameMap

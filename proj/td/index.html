@@ -16,6 +16,7 @@
     <script src="js/classes/GameInfo.js"></script>
     <script src="js/classes/PathFinder.js"></script>
     <script src="js/classes/PathNode.js"></script>
+    <script src="js/classes/Enemy1.js"></script>
 
     <!-- Import CSS Files -->
     <link rel="stylesheet" href="css/body.css">
@@ -27,37 +28,60 @@
 
 <body>
     <canvas id="game-canvas"></canvas>
+    <canvas id="animation-canvas"></canvas>
     <div id="text-content">
-        <div> Random Tower Defense!</div>
-        <div> <span style="color:red">Lives:</span> 100 </div>
-        <div> <span style="color:#ffff42">Coins:</span> 100 </div>
-
+        
+        <div class="info-box" id="player-stats">
+            <div> Random Tower Defense!</div>
+            <div> <span style="color:red">Lives:</span> 100 </div>
+            <div> <span style="color:#ffff42">Coins:</span> 100 </div>
+        </div>
         <div class="info-box" id="selected-tile">Selected Tile</div>
         <div class="info-box" id="helper-functions">
-                Helper Functions
+                Tools
                 <br>
                 <button onclick="showHidePath()">
                     Show/Hide Path
                 </button>
                 <br>
-                <button onclick="showHideCheckedNodes()">
-                    Show/Hide CheckedNodes
-                </button>
-                <br>
+                
                 <button onclick="randomizeMap()">
                     Randomize Map
                 </button>
 
+                
+
+                
+
+        </div>
+        <div class="info-box" id="sandbox-functions">
+            Sandbox Tools<br>
+            <button onclick="startWave()">
+                Start Wave
+            </button>
+            <button onclick="clearWave()">
+                Clear Wave
+            </button>
+        </div>
+        <div class="info-box" id="dev-functions">
+            Dev Tools<br>
+            <button onclick="showHideCheckedNodes()">
+                Show/Hide CheckedNodes
+            </button><br>
         </div>
         <div class="info-box" id="map-info">Map Info
             <lu>
-                <li>Number Of Rocks: </li>
-                <li>Number of Checkpoints: </li>
-                <li>Map Dimensions: </li>               
+                <li>This Will Show Map Details</li>             
             </lu>
         </div>
         <div class="info-box" id="upgrades">Upgrades
            
+        </div>
+
+        <div class="info-box" id="upgrades">
+            <b>Developers</b><br>
+            Andy Smith <br>
+
         </div>
     </div>
     

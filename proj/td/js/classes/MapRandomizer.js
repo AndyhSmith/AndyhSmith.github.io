@@ -15,13 +15,13 @@ class MapRandomizer {
 
         if (getRandomInt(10) < 8) {
             this.createRandomTile(CHECK_1);
-            if (getRandomInt(10) < 8) {
+            if (getRandomInt(10) < 6) {
                 this.createRandomTile(CHECK_2);
-                if (getRandomInt(10) < 8) {
+                if (getRandomInt(10) < 4) {
                     this.createRandomTile(CHECK_3);
-                    if (getRandomInt(10) < 8) {
+                    if (getRandomInt(10) < 2) {
                         this.createRandomTile(CHECK_4);
-                        if (getRandomInt(10) < 8) {
+                        if (getRandomInt(10) < 2) {
                             this.createRandomTile(CHECK_5);
                         }
                     }
@@ -36,17 +36,17 @@ class MapRandomizer {
             this.createRandomTile(NO_BUILD);
         }
 
-        for (let i = 0; i < getRandomInt(10); i++) {
-            this.createRandomTile(ENEMY_SPEED_BOOST);
-        }
+        // for (let i = 0; i < getRandomInt(10); i++) {
+        //     this.createRandomTile(ENEMY_SPEED_BOOST);
+        // }
 
-        for (let i = 0; i < getRandomInt(10); i++) {
-            this.createRandomTile(RANGE_BOOST);
-        }
+        // for (let i = 0; i < getRandomInt(10); i++) {
+        //     this.createRandomTile(RANGE_BOOST);
+        // }
 
-        for (let i = 0; i < getRandomInt(10); i++) {
-            this.createRandomTile(DAMAGE_BOOST);
-        }
+        // for (let i = 0; i < getRandomInt(10); i++) {
+        //     this.createRandomTile(DAMAGE_BOOST);
+        // }
     }
 
     // Creates the array that holds the values for the game map.
