@@ -3,8 +3,8 @@ var zoomAmount = 2;
 
 //Declerations
 var xPos = 0
-var newCanvasHeight = 500;
-var newCanvasWidth = 500;
+var newCanvasHeight = screen.height / 2.5; //500;
+var newCanvasWidth = screen.width / 2.5; //500;
 var xUpperRange = newCanvasWidth / 100;
 var xLowerRange = -newCanvasWidth / 100;
 var yUpperRange = newCanvasHeight / 100;
@@ -16,8 +16,8 @@ var decrementValueY = 1
 
 
 //Colors
-var activeButtonColor = "lightgreen";
-var normalButtonColor = "rgb(200,200,200)";
+var activeButtonColor = "rgb(110,139,112)";
+var normalButtonColor = "rgb(163,96,100)";
 var redColor = 50;
 var greenColor = 50;
 var blueColor = 50;
@@ -26,6 +26,7 @@ var blueColor = 50;
 var zoomInToggle = false;
 var zoomOutToggle = false;
 var panToggle = false;
+var showAdvancedToggle = false;
 
 
 
@@ -35,21 +36,38 @@ let myCanvas;
  * Sets Canvas Size
  */
 function setup() {
-	document.getElementById("zoomInID").style.backgroundColor = activeButtonColor;
+	document.getElementById("zoomInID").style.color = activeButtonColor;
+	document.getElementById("panID").style.color = normalButtonColor;
+	document.getElementById("zoomOutID").style.color = normalButtonColor;
 	zoomInToggle = true;
-	myCanvas = createCanvas(newCanvasWidth, newCanvasHeight);
-	myCanvas.parent('myContainer');
 	pixelDensity(1);
+	myCanvas = createCanvas(newCanvasWidth, newCanvasHeight);
+
+	
+	myCanvas.parent('myContainer');
+		
+
 	loadPixels();
 	draw();
+	
+	// document.getElementById("defaultCanvas0").width = 1000;
+	document.getElementById("defaultCanvas0").style.width = window.innerWidth + "px";
+	document.getElementById("defaultCanvas0").style.height = window.innerHeight + "px";
+	document.getElementById("defaultCanvas0").style.position = "fixed";
+	document.getElementById("defaultCanvas0").style.left = "50px";
+	document.getElementById("defaultCanvas0").style.top = "0px";
+	console.log(document.getElementById("defaultCanvas0"));
+	// $("#defaultCanvas0").css({ 'height': "720px" });
+	// $("#defaultCanvas0").css({ 'width': "1080px" });
 }
 
 function mandelbrotUpdate() {
-	if (mouseX > 0 && mouseX < newCanvasWidth && mouseY > 0 && mouseY < newCanvasHeight) {
+	if (mouseX > 50 && mouseY > 50 && !showAdvancedToggle) {
 		xPos = map(mouseX, 0, width, xLowerRange, xUpperRange );
 		yPos = map(mouseY, 0, height, yLowerRange, yUpperRange );
 		
 		zoomAmount = document.getElementById("zoomAmount").value;
+		
 		if (zoomInToggle == true) {
 			decrementValueX = decrementValueX / zoomAmount;
 			decrementValueY = decrementValueX * (newCanvasHeight/ newCanvasWidth);
@@ -122,28 +140,28 @@ function zoomIn() {
 	if (zoomInToggle == true) {
 		zoomInToggle = false;
 		zoomOutToggle = false;
-		document.getElementById("zoomInID").style.backgroundColor = normalButtonColor;
+		document.getElementById("zoomInID").style.color = normalButtonColor;
 	} else {
 		
 		zoomInToggle = true;
 		zoomOutToggle = false;
-		document.getElementById("zoomInID").style.backgroundColor = activeButtonColor;
-		document.getElementById("zoomOutID").style.backgroundColor = normalButtonColor;
-		document.getElementById("panID").style.backgroundColor = normalButtonColor;
+		document.getElementById("zoomInID").style.color = activeButtonColor;
+		document.getElementById("zoomOutID").style.color = normalButtonColor;
+		document.getElementById("panID").style.color = normalButtonColor;
 	}
 }
 
 function zoomOut() {
 	panToggle = false;
 	if (zoomOutToggle == true) {
-		document.getElementById("zoomOutID").style.backgroundColor = normalButtonColor;
+		document.getElementById("zoomOutID").style.color = normalButtonColor;
 		
 		zoomOutToggle = false;
 		zoomInToggle = false;
 	} else {
-		document.getElementById("zoomOutID").style.backgroundColor = activeButtonColor;
-		document.getElementById("zoomInID").style.backgroundColor = normalButtonColor;
-		document.getElementById("panID").style.backgroundColor = normalButtonColor;
+		document.getElementById("zoomOutID").style.color = activeButtonColor;
+		document.getElementById("zoomInID").style.color = normalButtonColor;
+		document.getElementById("panID").style.color = normalButtonColor;
 		zoomOutToggle = true;
 		zoomInToggle = false;
 	}
@@ -151,12 +169,12 @@ function zoomOut() {
 
 function pan() {
 	if (panToggle == true) {
-		document.getElementById("panID").style.backgroundColor = normalButtonColor;
+		document.getElementById("panID").style.color = normalButtonColor;
 		panToggle = false;
 	} else {
-		document.getElementById("panID").style.backgroundColor = activeButtonColor;
-		document.getElementById("zoomInID").style.backgroundColor = normalButtonColor;
-		document.getElementById("zoomOutID").style.backgroundColor = normalButtonColor;
+		document.getElementById("panID").style.color = activeButtonColor;
+		document.getElementById("zoomInID").style.color = normalButtonColor;
+		document.getElementById("zoomOutID").style.color = normalButtonColor;
 		zoomOutToggle = false;
 		zoomInToggle = false;
 		panToggle = true;
@@ -245,4 +263,15 @@ function draw() {
 	updatePixels();
 	noLoop();
 	
+}
+
+
+function hideAdvanced() {
+	document.getElementById("container-advanced").style.display = "none";
+	showAdvancedToggle = false;
+}
+
+function showAdvanced() {
+	document.getElementById("container-advanced").style.display = "block";
+	showAdvancedToggle = true;
 }
