@@ -18,11 +18,15 @@ var selected = [];
 //Colors
 var activeButtonColor = "lightgreen";
 var normalButtonColor = "rgb(150,150,150,.3)";
-var selectedColor = "rgb(255,255,0,.5)";
+var selectedColor = "rgba(255,0,255,1)";
 
 //Start
 let img = new Image();
-img.src = 'bugs.png'
+img.src = 'marine.png'
+
+let imgL = new Image();
+imgL.src = 'marine-l.png'
+
 var c = document.getElementById("myCanvas");
 var ctx = c.getContext("2d");
 ctx.canvas.width  = w;
@@ -90,12 +94,14 @@ function createZone(x, y, r) {
 function createOBJ(x, y, s) {
 	var obj = {
 		"angle":0,
+		"angleDeg":0,
 		"x":x,
 		"y":y,
 		"px":x,
 		"py":y,
 		"h":16 * s,
 		"w":16 * s,
+		"moving": false,
 		"xTarget":200,
 		"yTarget":200,
 		"velocity":Math.random()*3 + 5,
@@ -104,7 +110,7 @@ function createOBJ(x, y, s) {
 		"moveDirection": "R",
 		"moveLeft":false,
 		"moveRight":false,
-		"animationSpeed":7,
+		"animationSpeed":20,
 		"animationPosition":0,
 		"scale":s,
 		"selected": true,
@@ -157,9 +163,14 @@ function mouseClick(event){
 			}
 			var deltaX = objects[o].xTarget - objects[o].x
 			var deltaY = objects[o].yTarget - objects[o].y
-			objects[o].angle = Math.atan((objects[o].yTarget - objects[o].y) / (objects[o].xTarget - objects[o].x));
+			objects[o].angle = Math.atan2((objects[o].yTarget - objects[o].y), (objects[o].xTarget - objects[o].x)) - (Math.PI)
 			objects[o].xVelocity = Math.cos(objects[o].angle) * objects[o].velocity;
 			objects[o].yVelocity = Math.sin(objects[o].angle) * objects[o].velocity;
+			objects[o].angleDeg = Math.atan2((objects[o].yTarget - objects[o].y), (objects[o].xTarget - objects[o].x)) * (180 / Math.PI)
+			objects[o].angleDeg  = 360 - objects[o].angleDeg + 90;
+			objects[o].angleDeg = (objects[o].angleDeg + 360) % 360
+			
+
 		}
 	}
 	
@@ -181,71 +192,118 @@ function collision(o1, o2, x, y) {
 	}
 }
 
+function checkHCollision(object1) {
+	// console.log(objects)
+	for (e in objects) {
+	// 	// Rule out self collisions
+		if (e != object1) {
+			
+			if (Math.abs(object1.x - e.x) < 30) {
+				// console.log("collision")
+	// 			return true;
+			}
+		}
+	}
+	return false;
+}
+
 function moveToLocation() {
+	for (e in objects) {
+		console.log(e)
+	}
 	for (o in objects) {
 		if (objects[o].selected == true) {
 			objects[o].px = objects[o].x;
 			objects[o].py = objects[o].y;
-			if (objects[o].x > objects[o].xTarget) {
-				//Left Half
-				objects[o].moveLeft = true;
-				for (e in objects) {
-					if (e != o) {
-						if (collision(o,e, -objects[o].xVelocity, 0)) {
-							move = false;
-						}
-					}
-				}
-				if (move) {
+
+			// Set initial movement false
+			objects[o].moving = false;
+
+			// Check If Arrived
+			if (Math.abs(objects[o].x - objects[o].xTarget) > Math.abs(objects[o].xVelocity)) {
+				if (!checkHCollision(objects[o])) {
 					objects[o].x -= objects[o].xVelocity;
+					objects[o].moving = true;
 				}
-				move = true;
-				for (e in objects) {
-					if (e != o) {
-						if (collision(o,e, 0, -objects[o].yVelocity)) {
-							move = false;
-						}
-					}
-				}
-				if (move) {
-					objects[o].y -= objects[o].yVelocity;
-				}
-				move = true;
-
-
-			} else {
-				objects[o].moveLeft = false;
 			}
-			if ((objects[o].x < objects[o].xTarget)) {
-				for (e in objects) {
-					if (e != o) {
-						if (collision(o,e, objects[o].xVelocity, 0)) {
-							move = false;
-						}
-					}
-				}
-				objects[o].moveRight = true;
-				if (move) {
-					objects[o].x += objects[o].xVelocity;
-				}
-				move = true;
 
-				for (e in objects) {
-					if (e != o) {
-						if (collision(o,e, 0, objects[o].yVelocity)) {
-							move = false;
-						}
-					}
-				}
-				objects[o].moveRight = true;
-				if (move) {
-					objects[o].y += objects[o].yVelocity;
-				}
-				move = true;
-			} else {
-				objects[o].moveRight = false;
+			if (Math.abs(objects[o].y - objects[o].yTarget) > Math.abs(objects[o].yVelocity)) {
+				objects[o].y -= objects[o].yVelocity;
+				objects[o].moving = true;
 			}
+
+			
+			
+		// 	if (objects[o].x > objects[o].xTarget) {
+		
+		// 		//Left Half
+		// 		objects[o].moveLeft = true;
+		// 		for (e in objects) {
+		// 			if (e != o) {
+		// 				if (collision(o,e, -objects[o].xVelocity, 0)) {
+		// 					move = false;
+		// 					objects[o].moving = false;
+		// 				}
+		// 			}
+		// 		}
+		// 		if (move) {
+		// 			objects[o].x -= objects[o].xVelocity;
+		// 		}
+		// 		move = true;
+		
+		// 		for (e in objects) {
+		// 			if (e != o) {
+		// 				if (collision(o,e, 0, -objects[o].yVelocity)) {
+		// 					move = false;
+		// 				}
+		// 			}
+		// 		}
+		// 		if (move) {
+		// 			objects[o].y -= objects[o].yVelocity;
+		// 		}
+		// 		move = true;
+		
+
+
+		// 	} else {
+		// 		objects[o].moveLeft = false;
+		// 	}
+		// 	if ((objects[o].x < objects[o].xTarget)) {
+		// 		for (e in objects) {
+		// 			if (e != o) {
+		// 				if (collision(o,e, objects[o].xVelocity, 0)) {
+		// 					move = false;
+		// 					objects[o].moving = false;
+		// 				}
+		// 			}
+		// 		}
+		// 		objects[o].moveRight = true;
+		// 		if (move) {
+		// 			objects[o].x += objects[o].xVelocity;
+		// 		}
+		// 		move = true;
+			
+
+		// 		for (e in objects) {
+		// 			if (e != o) {
+		// 				if (collision(o,e, 0, objects[o].yVelocity)) {
+		// 					move = false;
+		// 					objects[o].moving = false;
+		// 				}
+		// 			}
+		// 		}
+		// 		objects[o].moveRight = true;
+		// 		if (move) {
+		// 			objects[o].y += objects[o].yVelocity;
+		// 		}
+		// 		move = true;
+				
+		// 	} else {
+		// 		objects[o].moveRight = false;
+		// 	}
+		// }
 		}
+		
 	}
 }
 
@@ -298,29 +356,58 @@ function updateGraphics() {
 		// Draw Selection Circle
 		if (objects[o].selected == true) {
 			ctx.beginPath();
-			ctx.fillStyle = selectedColor;
-			ctx.arc(objects[o].x, h - objects[o].y, 26, 0, 2 * Math.PI);
+			ctx.fillStyle = "lightgreen";
+			// ctx.arc(objects[o].x, h - objects[o].y, 20, 0, 2 * Math.PI);
+			ctx.ellipse(objects[o].x, h - objects[o].y, 16, 12, 0, 0, 2 * Math.PI);
 			ctx.fill()
 		}
 		
-		objects[o].animationPosition = (animationCounter % objects[o].animationSpeed) + 1;
-		objects[o].objType = 32   //32 * 5
+		if (objects[o].moving == true) {
+			objects[o].animationPosition = (animationCounter % 9) + 4;
+		}
+		
+		
 		if ((objects[o].px != objects[o].x) && (objects[o].py != objects[o].y)) {
 			//objects[o].animationPosition = (animationCounter % objects[o].animationSpeed) + 1;
 			objects[o].objType = 0//32 * 4
 		} else {
 			//objects[o].objType = 1//32 * 5
 		}
-		ctx.save();
-		ctx.translate(objects[o].x , h - objects[o].y ) ;
-		if (objects[o].moveDirection == "L") {
-			ctx.rotate(-objects[o].angle - Math.PI/2 ); 
-		} else {
-			ctx.rotate(-objects[o].angle + Math.PI/2); 
+		// ctx.save();
+		// ctx.translate(objects[o].x , h - objects[o].y ) ;
+		// if (objects[o].moveDirection == "L") {
+		// 	ctx.rotate(-objects[o].angle - Math.PI/2 ); 
+		// } else {
+		// 	ctx.rotate(-objects[o].angle + Math.PI/2); 
+		// }
+		// // 544x 512y
+		let tempImage = img;
+		let rotationValue = Math.floor((objects[o].angleDeg / 11))
+		if (objects[o].angleDeg > 180) {
+			tempImage = imgL;
+			rotationValue = Math.floor(((objects[o].angleDeg - 180) / 11))
 		}
-		// 544x 512y
-		ctx.drawImage(img,width*objects[o].animationPosition,objects[o].objType,32,32,-16*objects[o].scale,-16*objects[o].scale,32 * objects[o].scale,32 * objects[o].scale);
-		ctx.restore();	
+
+		ctx.drawImage(tempImage, 
+			64 * rotationValue,
+			64*objects[o].animationPosition,
+			50,
+			50,
+			objects[o].x - 16, // X Position
+			h - objects[o].y - 32, // Y Position
+			32 * objects[o].scale, // Image Height
+			32 * objects[o].scale// Image Width)
+		)
+		// ctx.drawImage(img,
+		// 	width*objects[o].animationPosition,
+		// 	objects[o].objType,
+		// 	32,
+		// 	32,
+		// 	-16*objects[o].scale,
+		// 	-16*objects[o].scale,
+		// 	32 * objects[o].scale,
+		// 	32 * objects[o].scale);
+		// ctx.restore();	
 	}
 	// add bugs
 	
