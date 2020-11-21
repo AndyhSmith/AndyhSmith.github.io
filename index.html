@@ -10,94 +10,69 @@
 
 	  gtag('config', 'UA-27751732-2');
 	</script>
-	
-	<meta charset="UTF-8">
+    
+    <meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta name="description" content="Andy Smith is a student at brigham young university studing computer science.">
+	<meta name="description" content="Andy Smith is a student at Brigham Young University studing computer science.">
 	<meta name="keywords" content="BYU,Student,CS,2020">
-	<meta name="author" content="Andy Smith">
-	<title> Andy Smith </title>
-	
-	<!-- CSS -->
-	<link type="text/css" rel="stylesheet" href="index.css"></link>
-	<link href="ihover.css" rel="stylesheet">
+	<meta name="author" content="Andystan">
+    <title> Andystan </title>
+    
+    <!-- CSS -->
+    <link type="text/css" rel="stylesheet" href="site.css"></link>
 
 	<!-- Fonts -->
-	<link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/68a99d09f4.js" crossorigin="anonymous"></script>
 
 </head>
 <body>
-	<img src="res/self.jpg" id="profile-picture">
+    
+    <div id="content">
+        <div id=content-header>
+            
+        </div>
 
-	<h1>Andy Smith</h5>
-	<h4>As a student I don't have much free time, but when I do I like to program fun new things.</h4>
+        <div id=content-fill-bar></div>
 
-	<table class="center">
-		<tr>
-			<td>
-				<!-- normal -->
-				<div style="width:500px; height: 500px" class="ih-item square effect3 bottom_to_top"><a href="./proj/mandelbrot/index.html">
-					<div class="img"><img src="res/proj/projectMandelbrotSquare.jpg" alt="img"></div>
-					<div style="width:500px; height: 120px" class="info">
-					<h3>Online Mandelbrot Generator</h3>
-					<p style="font-size: 16px;">Generate and download a mandelbrot set image. <br> Zoom in and out and create animations.</p>
-				</div></a></div>
-				<!-- end normal -->
-			</td>
-			<td>
-				<!-- normal -->
-				<div style="width:500px; height: 500px" class="ih-item square effect3 bottom_to_top"><a href="./proj/td/index.html">
-					<div style="background-color: #F1B232; width: 100%;padding: 5px;">Work in Progress</div>
-					<div class="img"><img src="res/proj/towertd.png" alt="img"></div>
-					<div style="width:500px; height: 120px" class="info">
-					<h3>Random Tower Defense</h3>
-					<p style="font-size: 16px;"> A randomized tower defense map. <br> Uses Dijkstra's algorithm for enemy path finding.</p>
-				</div></a></div>
-				<!-- end normal -->
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<!-- normal -->
-				<div style="width:500px; height: 500px" class="ih-item square effect3 bottom_to_top"><a href="./proj/bugs/index.html">
-					<div class="img"><img src="res/proj/bugsPhoto.jpg" alt="img"></div>
-					<div style="width:500px; height: 120px" class="info">
-					<h3>Bug Controller</h3>
-					<p style="font-size: 16px;">Control a bug or a group of bugs. <br> Zones will glow green when a bug is within its radius.</p>
-				</div></a></div>
-				<!-- end normal -->
-			</td>
-			<td>
-				<!-- normal -->
-				<div style="width:500px; height: 500px" class="ih-item square effect3 bottom_to_top"><a href="www.chapterchalk.com">
-					<div style="background-color: #F1B232; width: 100%;padding: 5px;">Work in Progress</div>
-					<div class="img"><img src="res/proj/logo.png" alt="img"></div>
-					<div style="width:500px; height: 120px" class="info">
-					<h3>ChapterChalk.com</h3>
-					<p style="font-size: 16px;"> This website is being made to help authors preview their books. <br> Vue frontend, Python Flask API, and SQLite Database.</p>
-				</div></a></div>
-				<!-- end normal -->
-			</td>
-		</tr>
-		<tr>
-			<td>
-				<!-- normal -->
-				<div style="width:500px; height: 500px" class="ih-item square effect3 bottom_to_top"><a href="./proj/three/index.html">
-					<div style="background-color: #F1B232; width: 100%;padding: 5px;">Work in Progress</div>
-					<div class="img"><img src="res/proj/minecraft.jpg" alt="img"></div>
-					<div style="width:500px; height: 120px" class="info">
-					<h3>Block World</h3>
-					<p style="font-size: 16px;"> A 3D world similar to Minecraft (but a lot worse) <br> Programmed using three.js.</p>
-				</div></a></div>
-				<!-- end normal -->
-			</td>
-			<td>
-				
-			</td>
-		</tr>
-	</table>
+        <div id=content-nav>
+            <div id="nav-container">
+                <div id="nav1-link" onclick="nav1()" class="nav-link"><i class="fas fa-dungeon"></i> Games</div>
+                <div id="nav2-link" onclick="nav2()" class="nav-link"><i class="fas fa-image"></i> Create</div>
+                <div id="nav3-link" onclick="nav3()" class="nav-link"><i class="fas fa-flask"></i> Experiments</div>
+                <div id="nav4-link" onclick="nav4()" class="nav-link"><i class="fas fa-star-half-alt"></i> Incomplete</div>
+            </div>
+        </div>
+        <div id="nav1" class="content-body">
+            <h1>Games</h1>
+        </div>
 
-	
+        <div id="nav2" class="content-body">
+            <h1>Create</h1>
+        </div>
 
+        <div id="nav3" class="content-body">
+            <h1>Experiments</h1>
+        </div>
+
+        <div id="nav4" class="content-body">
+            <h1>Incomplete Projects</h1>
+        </div>
+
+        <div id="nav5" class="content-body">
+            <h1>Contact</h1>
+        </div>
+
+        
+        <!-- <div id=blank-bar></div> -->
+        <div id=content-fill-bar></div>
+        <div id=content-footer>
+            © Copyright 2020, Andystan Ltd. | <span id="nav5-link" onclick="nav5()">Contact</span>
+        </div>
+ 
+    </div> 
+    <!-- <script src="site.js"></script> -->
+    <script src="nav.js"></script>
+    <script src="content.js"></script>
 </body>
 </html>
